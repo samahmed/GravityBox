@@ -34,6 +34,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <permission
         android:name="gravitybox.permission.UNLOCK"
@@ -53,7 +54,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name="com.ceco.r.gravitybox.GravityBoxSettings"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
@@ -64,6 +67,7 @@
             android:name="com.ceco.r.gravitybox.GravityBoxSettingsAlias"
             android:label="@string/app_name"
             android:enabled="true"
+            android:exported="true"
             android:targetActivity="com.ceco.r.gravitybox.GravityBoxSettings" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,7 +85,8 @@
             android:label="@string/shortcut_activity_title"
             android:launchMode="singleTop"
             android:excludeFromRecents="true"
-            android:noHistory="true" >
+            android:noHistory="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -94,7 +99,8 @@
             android:launchMode="singleTop"
             android:excludeFromRecents="true"
             android:noHistory="true"
-            android:theme="@android:style/Theme.NoDisplay" >
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="false">
             <intent-filter>
                 <action android:name="gravitybox.intent.action.LAUNCH_ACTION" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -185,7 +191,8 @@
         </activity>
 
         <service android:name="com.ceco.r.gravitybox.GravityBoxService"
-            tools:ignore="ExportedService">
+            tools:ignore="ExportedService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="gravitybox.intent.action.TOGGLE_SYNC" />
                 <action android:name="gravitybox.intent.action.GET_SYNC_STATUS" />
@@ -195,7 +202,8 @@
         </service>
 
         <service android:name="com.ceco.r.gravitybox.TorchService"
-            tools:ignore="ExportedService">
+            tools:ignore="ExportedService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="gravitybox.intent.action.TOGGLE_TORCH" />
             </intent-filter>
@@ -210,7 +218,8 @@
         </service-->
 
         <service android:name="com.ceco.r.gravitybox.ScreenRecordingService"
-            tools:ignore="ExportedService">
+            tools:ignore="ExportedService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="gravitybox.intent.action.TOGGLE_SCREEN_RECORDING" />
             </intent-filter>
@@ -254,7 +263,8 @@
                 android:label="GravityBox"
                 android:icon="@drawable/ic_qs_gravitybox"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -265,7 +275,8 @@
                 android:label="@string/qs_tile_network_mode"
                 android:icon="@drawable/ic_qs_lte"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -276,7 +287,8 @@
                 android:label="@string/qs_tile_expanded_desktop"
                 android:icon="@drawable/ic_qs_expanded_desktop"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -287,7 +299,8 @@
                 android:label="@string/qs_tile_gps_alt"
                 android:icon="@drawable/ic_qs_gps_enable"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -298,7 +311,8 @@
                 android:label="@string/qs_tile_gps_slimkat"
                 android:icon="@drawable/ic_qs_location_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -309,7 +323,8 @@
                 android:label="@string/qs_tile_lock_screen"
                 android:icon="@drawable/ic_qs_lock_screen_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -320,7 +335,8 @@
                 android:label="@string/qs_tile_nfc"
                 android:icon="@drawable/ic_qs_nfc_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -331,7 +347,8 @@
                 android:label="@string/qs_tile_quickapp"
                 android:icon="@android:drawable/ic_menu_help"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -342,7 +359,8 @@
                 android:label="@string/qs_tile_quickapp_2"
                 android:icon="@android:drawable/ic_menu_help"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -353,7 +371,8 @@
                 android:label="@string/qs_tile_quickapp_3"
                 android:icon="@android:drawable/ic_menu_help"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -364,7 +383,8 @@
                 android:label="@string/qs_tile_quickapp_4"
                 android:icon="@android:drawable/ic_menu_help"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -375,7 +395,8 @@
                 android:label="@string/qs_tile_quickrecord"
                 android:icon="@drawable/ic_qs_qr_recording"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -386,7 +407,8 @@
                 android:label="@string/lc_quiet_hours"
                 android:icon="@drawable/ic_qs_quiet_hours_auto"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -397,7 +419,8 @@
                 android:label="@string/qs_tile_ringer_mode"
                 android:icon="@drawable/ic_qs_ring_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -408,7 +431,8 @@
                 android:label="@string/qs_tile_screenshot"
                 android:icon="@drawable/ic_qs_screenshot"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -419,7 +443,8 @@
                 android:label="@string/qs_tile_sleep"
                 android:icon="@drawable/ic_qs_sleep"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -430,7 +455,8 @@
                 android:label="@string/qs_tile_smart_radio"
                 android:icon="@drawable/ic_qs_smart_radio_saving"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -441,7 +467,8 @@
                 android:label="@string/qs_tile_stay_awake"
                 android:icon="@drawable/ic_qs_stayawake_off"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -452,7 +479,8 @@
                 android:label="@string/qs_tile_sync"
                 android:icon="@drawable/ic_qs_sync_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -463,7 +491,8 @@
                 android:label="@string/qs_tile_torch_gb"
                 android:icon="@drawable/ic_qs_torch_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -474,7 +503,8 @@
                 android:label="@string/qs_tile_volume"
                 android:icon="@drawable/ic_qs_volume"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -485,7 +515,8 @@
                 android:label="@string/qs_tile_compass"
                 android:icon="@drawable/ic_qs_compass_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -496,7 +527,8 @@
                 android:label="@string/qs_tile_usb_tethering"
                 android:icon="@drawable/ic_qs_usb_tether_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -507,7 +539,8 @@
                 android:label="@string/qs_tile_bt_tethering"
                 android:icon="@drawable/ic_qs_bt_tethering"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -518,7 +551,8 @@
                 android:label="@string/qs_tile_ambient_display"
                 android:icon="@drawable/ic_qs_ambientdisplay_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -529,7 +563,8 @@
                 android:label="@string/qs_tile_heads_up"
                 android:icon="@drawable/ic_qs_heads_up_on"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-                android:enabled="false">
+                android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -540,7 +575,8 @@
             android:label="@string/qs_tile_op_screen_refresh_rate"
             android:icon="@drawable/ic_qs_op_screen_refresh_rate"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:enabled="false">
+            android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -551,7 +587,8 @@
             android:label="@string/qs_tile_op_screen_resolution"
             android:icon="@drawable/ic_qs_op_screen_resolution"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:enabled="false">
+            android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>

@@ -102,7 +102,7 @@ public class TorchService extends Service {
 
         Intent intent = new Intent(this, TorchService.class);
         intent.setAction(ACTION_TOGGLE_TORCH);
-        PendingIntent stopIntent = PendingIntent.getService(this, 0, intent, 0);
+        PendingIntent stopIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
         Notification.Builder builder = new Notification.Builder(
                 this, GravityBoxApplication.NOTIF_CHANNEL_SERVICES);
@@ -229,7 +229,7 @@ public class TorchService extends Service {
         if (torchTimeout > 0) {
             Intent intent = new Intent(this, TorchService.class);
             intent.setAction(ACTION_TORCH_TIMEOUT);
-            mPendingIntent = PendingIntent.getService(this, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+            mPendingIntent = PendingIntent.getService(this, 1, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_MUTABLE);
             long triggerAtMillis = System.currentTimeMillis() + torchTimeout;
             mAlarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, mPendingIntent);
         }

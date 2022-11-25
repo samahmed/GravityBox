@@ -2,24 +2,24 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            storePassword 'Glass123'
-            keyPassword 'Glass123'
-            keyAlias 'key0'
-            storeFile file('C:\\gits\\GravityBox\\GravityBox\\keystore.jks')
+            storePassword 'sameer786'
+            keyPassword 'sameer786'
+            keyAlias 'primekey'
+            storeFile file('/home/sameer/SameerAndroidKeystore')
         }
         release {
-        storeFile file('C:\\gits\\GravityBox\\GravityBox\\keystore.jks')
-            storePassword 'Glass123'
-            keyPassword 'Glass123'
-            keyAlias 'key0'
+        storeFile file('/home/sameer/SameerAndroidKeystore')
+            storePassword 'sameer786'
+            keyPassword 'sameer786'
+            keyAlias 'primekey'
         }
     }
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         applicationId 'com.ceco.r.gravitybox'
-        minSdkVersion 31
+        minSdkVersion 33
         //noinspection OldTargetApi
-        targetSdkVersion 31
+        targetSdkVersion 33
     }
     buildTypes {
         debug {
@@ -41,12 +41,13 @@ android {
     }
     productFlavors {
     }
-    buildToolsVersion '31.0.0'
+    buildToolsVersion '33.0.0'
+    namespace 'com.ceco.r.gravitybox'
 }
 
 dependencies {
     compileOnly 'de.robv.android.xposed:api:82'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.palette:palette:1.0.0'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 }
